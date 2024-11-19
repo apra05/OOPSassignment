@@ -1,0 +1,17 @@
+1
+Passenger objects are stored as pointers in the TicketReservationSystem class to enhance memory management and operational efficiency. Using pointers allows dynamic allocation and deallocation of memory, ensuring that resources are utilized only when needed. This approach prevents unnecessary duplication of large objects and simplifies the system’s handling of polymorphic behavior, such as when dealing with subclasses of the Passenger class. By storing references instead of entire objects, the system maintains flexibility, supports easier updates or modifications, and ensures a scalable and maintainable design for managing passenger information.
+
+
+2
+The searchByTicketNumber() function is designed to locate a specific ticket in the system based on its unique ticket number. When invoked, the function takes the ticket number as input and searches through the collection of tickets stored in the system.
+If the tickets are stored in a sequential data structure like a list or array, the function performs a linear search, comparing each ticket’s number with the input until a match is found or the end of the collection is reached. However, if tickets are stored in a more efficient structure like a hash map or dictionary, the function can directly access the ticket using the ticket number as a key, resulting in a faster lookup.
+Once the matching ticket is located, the function retrieves and returns the associated ticket object, which may include details such as the passenger’s name, travel date, seat number, and destination. If no ticket with the provided number exists, the function typically returns an error message or a null value, indicating the search was unsuccessful.
+This function is crucial for quick access to ticket information, enhancing the user experience and the overall efficiency of the ticket reservation system.
+
+
+3
+If an array of pointers were not used to manage passengers, the system would instead store entire passenger objects directly in the array, leading to several significant drawbacks.
+Firstly, storing full objects increases memory usage, especially if the Passenger class contains large or complex data structures. Each operation involving passenger data, such as copying or updating, would require duplicating the entire object, resulting in performance overhead. This inefficiency would worsen as the number of passengers grows.
+Secondly, the system would lose flexibility in memory management. With pointers, objects can be dynamically allocated and deallocated, but storing objects directly ties the system to a fixed array size or requires implementing more complex resizing mechanisms. This rigidity reduces the system’s scalability and adaptability to changing requirements.
+Polymorphism, which allows the system to handle derived classes (e.g., regular or VIP passengers) seamlessly, would also become problematic. Pointers enable storing objects of derived classes in a base class array, but storing full objects directly would eliminate this capability.
+Finally, managing and sharing passenger data across different components would become cumbersome, as data would need to be copied instead of simply referencing the same object. In contrast, pointers simplify data sharing, improving system efficiency and maintainability.
